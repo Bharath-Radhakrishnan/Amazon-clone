@@ -11,7 +11,11 @@ function Product({ title, price, rating, image }) {
           <strong>{price}</strong>
         </p>
         <div className="product__rating">
-          <p>⭐{rating}</p>
+          {Array(rating)
+            .fill()
+            .map(() => (
+              <p>⭐</p>
+            ))}
         </div>
       </div>
       <img src={image} />

@@ -1,10 +1,12 @@
 import "./App.css";
 import Header from "./Header";
+import Home from "./Home";
+
 function App() {
   return (
     <div className="App">
       <Header />
-      <h1>Hello World!!!djshdjhdsjdshjdsgjdgsdgdghdsghgghghg</h1>
+      <Home />
     </div>
   );
 }

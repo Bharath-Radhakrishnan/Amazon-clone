@@ -8,17 +8,16 @@ function Home() {
       <div className="home__container">
         <img
           className="home__image"
-          src="https://images-eu.ssl-images-amazon.com/images/G/31/img20/Wireless/Cnnjpp/OnePlus/OnePlus_BAU/4thdec/D18734439_BAU_OnePlus_8T_Tall_hero_1500x600._CB414727933_.jpg"
+          src="https://images-eu.ssl-images-amazon.com/images/G/31/img20/Wireless/SamsungM/M51/26th_GWM51/Rv1/P38983965_IN_WLME_SamsungGalaxy_M51_Design_Change_1500x600_1._CB416037929_.jpg"
           alt="sorry.error"
         />
         <div className="home__row">
           <Product />
           <Product />
-          <Product />
         </div>
         <div className="home__row">
           <Product />
-
+          <Product />
           <Product />
         </div>
 

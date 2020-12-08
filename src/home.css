@@ -1,5 +1,6 @@
 .home {
   display: flex;
+  justify-content: center;
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
@@ -11,5 +12,9 @@
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 .home__row {
-  text-align: center;
+  display: flex;
+  flex: 1;
+  z-index: 1;
+  margin-left: 5px;
+  margin-right: 5px;
 }

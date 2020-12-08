@@ -1,17 +1,17 @@
 import React from "react";
 import "./product.css";
 
-function Product() {
+function Product({ title, price, rating }) {
   return (
     <div className="product">
       <div className="product__info">
-        <p>La La La La</p>
+        <p>{title}</p>
         <p className="product__price">
           <small>$$</small>
-          <strong>19.99</strong>
+          <strong>{price}</strong>
         </p>
         <div className="product__rating">
-          <p>⭐</p>
+          <p>⭐{rating}</p>
         </div>
       </div>
       <img src="https://images-na.ssl-images-amazon.com/images/I/41Q419CMtfL._SX325_BO1,204,203,200_.jpg" />

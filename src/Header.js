@@ -31,10 +31,12 @@ function Header() {
           <span className="header__optionline1">Your</span>
           <span className="header__optionline2">Prime</span>
         </div>
-        <div className="header__optionBasketIcon">
-          <ShoppingCartOutlinedIcon />
-          <span className="header__optionline2 header__basketCount">0</span>
-        </div>
+        <Link to="/checkout">
+          <div className="header__optionBasketIcon">
+            <ShoppingCartOutlinedIcon />
+            <span className="header__optionline2 header__basketCount">0</span>
+          </div>
+        </Link>
       </div>
     </div>
   );

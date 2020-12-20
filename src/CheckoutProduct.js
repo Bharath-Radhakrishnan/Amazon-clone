@@ -6,14 +6,13 @@ function CheckoutProduct({ id, title, image, rating, price }) {
   const [{ basket }, dispatch] = useStateValue();
 
   const removeItem = () => {
-    console.log("removed");
     dispatch({
-      action: "REMOVE_FROM_BASKET",
-      item: { id: id },
+      type: "REMOVE_FROM_BASKET",
+      id: id,
     });
   };
   return (
-    <div className="checkoutproduct">
+    <div className="checkoutproduct" key={id}>
       <img src={image}></img>
       <div className="checkoutproduct__info">
         <h3 className="checkoutproduct_title">{title}</h3>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./checkout.css";
+import "./checkoutproduct.css";
 import { useStateValue } from "./StateProvider";
 
 function CheckoutProduct({ id, title, image, rating, price }) {
@@ -16,9 +16,11 @@ function CheckoutProduct({ id, title, image, rating, price }) {
     <div className="checkoutproduct">
       <img src={image}></img>
       <div className="checkoutproduct__info">
-        <h3>{title}</h3>
-        <p>${price}</p>
-        <button onClick={removeItem}>Remove Item</button>
+        <h3 className="checkoutproduct_title">{title}</h3>
+        <p className="checkoutproduct_price">
+          <small>$</small>
+          <strong>{price}</strong>
+        </p>
         <div className="product__rating">
           {Array(rating)
             .fill()
@@ -26,6 +28,7 @@ function CheckoutProduct({ id, title, image, rating, price }) {
               <p key={index}>⭐</p>
             ))}
         </div>
+        <button onClick={removeItem}>Remove Item</button>
       </div>
     </div>
   );

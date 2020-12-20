@@ -21,17 +21,17 @@
 .checkout__right {
   display: flex;
 } */
-.producttile {
+.checkoutproduct {
   display: flex;
   padding: 20px;
   border: 1px solid gainsboro;
 }
-.producttile > img {
+.checkoutproduct > img {
   height: 100px;
   width: 100px;
   margin-right: 40px;
 }
-.producttile__info > button {
+.checkoutproduct__info > button {
   background-color: #f0c14b;
   border: 1px solid;
   border-radius: 2px;

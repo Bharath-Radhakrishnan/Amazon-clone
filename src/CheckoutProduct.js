@@ -13,12 +13,19 @@ function CheckoutProduct({ id, title, image, rating, price }) {
     });
   };
   return (
-    <div className="producttile">
+    <div className="checkoutproduct">
       <img src={image}></img>
-      <div className="producttile__info">
+      <div className="checkoutproduct__info">
         <h3>{title}</h3>
         <p>${price}</p>
         <button onClick={removeItem}>Remove Item</button>
+        <div className="product__rating">
+          {Array(rating)
+            .fill()
+            .map((value, index) => (
+              <p key={index}>⭐</p>
+            ))}
+        </div>
       </div>
     </div>
   );

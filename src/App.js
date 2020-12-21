@@ -11,7 +11,6 @@ function App() {
   const [{ user }, dispatch] = useStateValue();
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("new user is>>>>>", authUser);
       if (authUser) {
         //If user logged in
         dispatch({

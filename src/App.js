@@ -7,6 +7,7 @@ import Login from "./Login";
 import { useEffect } from "react";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
+import Payment from "./Payment";
 function App() {
   const [{ user }, dispatch] = useStateValue();
   useEffect(() => {
@@ -29,16 +30,20 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/" exact={true}>
-            <Header />
-            <Home />
-          </Route>
           <Route path="/checkout">
             <Header />
             <Checkout />
           </Route>
+          <Route path="/payment">
+            <Header />
+            <Payment />
+          </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/">
+            <Header />
+            <Home />
           </Route>
         </Switch>
       </div>

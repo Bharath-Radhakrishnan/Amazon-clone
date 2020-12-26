@@ -30,7 +30,7 @@ function Checkout() {
           src="https://m.media-amazon.com/images/S/aplus-media/sc/639bbef0-9746-4f6e-871d-e83914870f24.__CR1,0,2021,625_PT0_SX970_V1___.jpg"
         />
         <div>
-          <h3>Hello, {user?.email}</h3>
+          <h3>Hello {user?.email || "Guest"},</h3>
           <h2 className="checkout__title">
             Your Shopping Basket contains {itemCount} items
           </h2>

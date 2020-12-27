@@ -111,7 +111,10 @@ function Payment() {
                 displayType={"text"}
                 thousandSeparator={true}
               />
-              <button disabled={processing || disabled || succeeded}>
+              <button
+                disabled={processing || disabled || succeeded}
+                type="submit"
+              >
                 <span>{processing ? <p>processing</p> : "Buy Now"}</span>
               </button>
             </div>

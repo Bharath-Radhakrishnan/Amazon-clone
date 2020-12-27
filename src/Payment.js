@@ -1,22 +1,51 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import CheckoutProduct from "./CheckoutProduct";
 import { useStateValue } from "./StateProvider";
-import {
-  CardElement,
-  Elements,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
+import CurrencyFormat from "react-currency-format";
+import { getBasketTotal } from "./reducer";
+import axios from "./axios";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./payment.css";
 
 function Payment() {
   const [{ user, basket }, dispatch] = useStateValue();
   const [error, setError] = useState(null);
+  const [processing, setProcessing] = useState("");
+  const [succeeded, setSucceeded] = useState(false);
   const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState(true);
 
-  const handleSubmit = (e) => {
+  const history = useHistory();
+  const stripe = useStripe();
+  const elements = useElements();
+  useEffect(() => {
+    const getClientSecret = async () => {
+      const response = await axios({
+        method: "post",
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+      });
+      setClientSecret(response.data.clientSecret);
+    };
+    getClientSecret();
+  }, [basket]);
+  console.log("The Secret is >>>>>", clientSecret);
+  const handleSubmit = async (e) => {
     //strip stuff
+    e.preventDefault();
+    setProcessing(true);
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: { card: elements.getElement(CardElement) },
+      })
+      .then(({ paymentIntent }) => {
+        //paymentIntent = payment confirmation
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+        dispatch({ type: "EMPTY_BASKET" });
+        history.replace("/orders");
+      });
   };
   const handleChange = (e) => {
     //strip stuff
@@ -69,6 +98,23 @@ function Payment() {
           {/* Stripe Goes Here */}
           <form onSubmit={handleSubmit}>
             <CardElement onChange={handleChange} />
+            <div className="payment__pricecontainer">
+              <CurrencyFormat
+                renderText={(value) => (
+                  <>
+                    <h3>Order total:{value}</h3>
+                  </>
+                )}
+                value={getBasketTotal(basket)}
+                decimalScale={2}
+                prefix="$"
+                displayType={"text"}
+                thousandSeparator={true}
+              />
+              <button disabled={processing || disabled || succeeded}>
+                <span>{processing ? <p>processing</p> : "Buy Now"}</span>
+              </button>
+            </div>
           </form>
         </div>
       </div>
